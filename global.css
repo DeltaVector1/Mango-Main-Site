@@ -1,0 +1,60 @@
+:root {
+	--bg-color: #FFE5B4;
+	--text-color: #4B3F15;
+	--accent-color: #FFB347;
+	--button-bg: #FFD27F;
+	--button-text: #4B3F15;
+	--button-hover-bg: #FFC04D;
+  }
+  * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  }
+  body {
+	margin: 0;
+	font-family: 'Quicksand', sans-serif;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	transition: background-color 0.5s, color 0.5s;
+  }
+  .dark-mode {
+	--bg-color: #4B3F15;
+	--text-color: #FFE5B4;
+	--accent-color: #FFCC80;
+	--button-bg: #FFB347;
+	--button-text: #4B3F15;
+	--button-hover-bg: #FF9F1C;
+  }
+  
+  :root {
+	/* Add these new variables */
+	--message-bg: rgba(255, 255, 255, 0.1);
+	--message-text: var(--text-color);
+	--input-border: var(--button-bg);
+  }
+  .dark-mode {
+	/* Add these to dark mode as well */
+	--message-bg: rgba(0, 0, 0, 0.2);
+	--message-text: var(--text-color);
+	--input-border: var(--button-bg);
+  }
+  :root {
+	--bg-color: #FFE5B4; /* Background color */
+	--text-color: #4B3F15; /* Text color */
+	--accent-color: #FFB347; /* Accent color */
+	--button-bg: #FFD27F; /* Button background */
+	--button-text: #4B3F15; /* Button text color */
+	--button-hover-bg: #FFC04D; /* Button hover background */
+	--card-bg: #FFF1D6; /* Card background color */
+  }
+  .dark-mode {
+	--bg-color: #4B3F15;
+	--text-color: #FFE5B4;
+	--accent-color: #FFCC80;
+	--button-bg: #FFB347;
+	--button-text: #4B3F15;
+	--button-hover-bg: #FF9F1C;
+	--card-bg: #5C4A1F; /* Dark mode card background */
+  }
+  
