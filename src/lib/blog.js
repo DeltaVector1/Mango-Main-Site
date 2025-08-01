@@ -1,6 +1,28 @@
 import { parseMarkdown, sortPostsByDate } from './markdown';
 
-const BLOG_DIR = '/blogs';
+// Get the base URL for the current environment
+function getBaseUrl() {
+  // Check if we're running in a browser environment
+  if (typeof window !== 'undefined') {
+    // For GitHub Pages, the base URL might be the repository name
+    // Extract the base path from the current URL
+    const pathSegments = window.location.pathname.split('/');
+    // If we're on GitHub Pages with a custom domain, use root path
+    if (window.location.hostname === 'mango.anthra.site') {
+      return '';
+    }
+    // If we're on github.io domain, the first segment after the domain would be the repo name
+    else if (window.location.hostname.includes('github.io')) {
+      return pathSegments[1] ? `/${pathSegments[1]}` : '';
+    }
+    // For local development or other environments, use root path
+    return '';
+  }
+  // Fallback to root path if not in browser
+  return '';
+}
+
+const BLOG_DIR = `${getBaseUrl()}/blogs`;
 
 /**
  * Get all blog posts

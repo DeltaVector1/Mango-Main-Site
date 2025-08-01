@@ -9,6 +9,9 @@
   import Footer from './components/Footer.svelte';
   import AudioPlayer from './components/AudioPlayer.svelte';
   
+  // Get the base URL for routing
+  let basePath = '';
+  
   // Export the url prop for the Router
   export let url = '';
   
@@ -24,6 +27,11 @@
     
     // Apply dark mode class
     updateDarkMode();
+    
+    // Get the base path from window if available
+    if (typeof window !== 'undefined' && window.basePath !== undefined) {
+      basePath = window.basePath;
+    }
   });
   
   // Toggle dark mode
@@ -43,7 +51,7 @@
   }
 </script>
 
-<Router {url}>
+<Router {url} basepath={basePath}>
   <div class="app-container">
     <Nav {darkMode} {toggleDarkMode} />
     

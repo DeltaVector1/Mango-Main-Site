@@ -5,16 +5,34 @@
     <meta name='viewport' content='width=device-width,initial-scale=1'>
     <title>when trees fall...</title>
     <meta name="description" content="A blog about AI, machine learning, and more">
-    <link rel='stylesheet' href='/global.css'>
-    <link rel='stylesheet' href='/build/bundle.css'>
+    <!-- Base path script to handle GitHub Pages and custom domains -->
+    <script>
+        // Determine the base path for assets
+        function getBasePath() {
+            // If we're on the custom domain, use root path
+            if (window.location.hostname === 'mango.anthra.site') {
+                return '';
+            }
+            // If we're on github.io domain, the first segment after the domain would be the repo name
+            else if (window.location.hostname.includes('github.io')) {
+                const pathSegments = window.location.pathname.split('/');
+                return pathSegments[1] ? `/${pathSegments[1]}` : '';
+            }
+            // For local development, use root path
+            return '';
+        }
+        window.basePath = getBasePath();
+    </script>
+    <link rel='stylesheet' href='global.css'>
+    <link rel='stylesheet' href='build/bundle.css'>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-    <script defer src='/build/bundle.js'></script>
+    <script defer src='build/bundle.js'></script>
     <!-- Highlight.js for code syntax highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/images/mango-icon.png">
+    <link rel="icon" type="image/png" href="images/mango-icon.png">
 </head>
 <body>
     <div id="app"></div>
