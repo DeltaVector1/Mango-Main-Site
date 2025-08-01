@@ -6,35 +6,42 @@ type: about
 
 # About Me
 
-Hello! I'm a researcher and developer with a passion for machine learning, natural language processing, and artificial intelligence. This site serves as my digital garden - a place where I share my thoughts, research, and explorations in these fields.
+Hi! New site. I decided to transition fully into the average ML trainer's blog to keep busy during training. I'm Mango or Delta-Vector on HF. I finetune models for https://dphn.ai and am always active (mostly) in Pygmalion.chat's Discord (and even trained some models for them!). I started out making Character Cards on Chub and then training 4Bs for function calling, and now I'm here... somehow. I don't question it too much. 
 
-## Research Interests
+I train models primarily for ACR tasks, expanding into dealignment and RL to make sure the model doesn't spam "shivers down your spine." Currently, my favorite finetuned models are:
+- https://huggingface.co/Delta-Vector/Austral-70B-Winton
+- https://huggingface.co/Delta-Vector/Austral-32B-GLM4-Winton
+- https://huggingface.co/Delta-Vector/Rei-24B-KTO
+- https://huggingface.co/Delta-Vector/Plesio-70B
+- https://huggingface.co/Doctor-Shotgun/L3.3-70B-Magnum-v5-SFT-Alpha
+- https://huggingface.co/allura-org/MS3.2-24b-Angel
 
-My research focuses on several interconnected areas:
+===
 
-- **Language Models**: Understanding and improving how machines process and generate human language
-- **Compression and Information Theory**: Exploring the connections between compression, prediction, and understanding
-- **Neural Network Architectures**: Developing more efficient and effective neural network designs
-- **Interpretability**: Making AI systems more transparent and understandable
+## Interests
+
+I have so many hobbies it's kind of hard to keep track of. I think I've done alright for myself. Here's what I can remember:
+
+- Writing: I used to write fanfics on Wattpad. Despite them being lost to time, they were very fun to write. Eventually I moved to writing Chub cards. I don't think they are the best thing ever, and a lot of them have massive oversights, but they were fun to make. My most popular card is somehow still on the first few pages on Chub. 
+- Finetuning: I mean, there's not much to say here. I got $15 from my best friend to train a 4B function calling model, and then another friend let me run some small 8B trains on 2xRTX6000s, and it went uphill from there. I started out overfitting and underfitting Gemma-2-9B QLoRAs and then made my first, best release with Magnum-V2-4B and Holland-4B. I try to train models to be as uncensored and soulful as I can. 
+- Hip-hop: TL;DR: Kalomaze (https://x.com/kalomaze) planted the bug of music in my ears. I used to barely listen to much music at all before he showed me the right and true path of Kanye West/JPEGMAFIA/Denzel Curry/and much more. 
 
 ## Background
 
-I have a background in computer science and mathematics, with specialized training in machine learning and computational linguistics. I've worked in both academic research and industry applications, giving me a perspective that bridges theoretical advances with practical implementations.
-
-## Philosophy
-
-I believe that the best research comes from a combination of rigorous theoretical understanding and hands-on experimentation. I'm particularly interested in the intersection of different fields - how ideas from information theory can inform machine learning, how cognitive science can inspire AI architectures, and how philosophy of mind can help us understand what it means for machines to "understand".
+I have no background in anything ML or tech. I haven't gone to college, but I passed high school! So I guess that counts for something. But I've got a decent amount of experience under my belt, I think:
+- https://huggingface.co/CharGen/CharGen-v3-mini
+	- Data cleaning for CharGen-V3 was me and Kubes toiling away at formatting Chub cards, and I managed to get it cleaned very fast and pretty well.
+- https://huggingface.co/anthracite-org
+	- I was a trainer for Anthracite Org, a prominent finetuning org of a bunch of friends. I trained anthracite-org/magnum-v4-27b, anthracite-org/magnum-v4-9b & anthracite-org/magnum-v2-4b.
+- https://huggingface.co/PygmalionAI
+	- I trained all of the Quick models on the site as well as somehow getting my QwQ finetune hosted by them as a premium model. It does seem to have worked, Tav says users have not put out hit lists against me thus far. Great success! Also, the people there are very cool and nice. 
+- https://dphn.ai/
+	- Since a few months ago, I've started work for Dolphin AI. I enjoy their goal towards uncensored, de-aligned models, and I'm very happy to be working on it. Love them.  
 
 ## Contact
 
-I'm always open to discussions, collaborations, or just interesting conversations about AI and machine learning. Feel free to reach out to me via:
-
-- Email: example@example.com
-- Twitter: @example
-- GitHub: github.com/example
-
-## About This Site
-
-This site is built with a minimalist approach, focusing on content rather than flashy design. The blog posts are written in Markdown and automatically converted to HTML. The source code for this site is available on GitHub.
-
-Thanks for visiting, and I hope you find something interesting here!
+I'm mostly around on Discord or Twitter:
+- Twitter: https://x.com/mangosweet78
+- GitHub: https://github.com/DeltaVector1
+- HF: https://hf.co/Delta-Vector
+- Discord: sweetmango78
