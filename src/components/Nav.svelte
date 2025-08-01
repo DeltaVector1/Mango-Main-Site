@@ -1,0 +1,92 @@
+<script>
+  import { Link, location } from 'svelte-routing';
+  
+  // Props
+  export let darkMode = true;
+  export let toggleDarkMode;
+  
+  // Reactive statement to get the current path
+  $: path = $location.pathname;
+</script>
+
+<nav class="nav">
+  <div class="logo">
+    <Link to="/">when trees fall...</Link>
+  </div>
+  
+  <div class="nav-links">
+    <Link to="/" class="nav-link {path === '/' ? 'active' : ''}">Home</Link>
+    <Link to="/blog" class="nav-link {path.startsWith('/blog') ? 'active' : ''}">Blog</Link>
+    <Link to="/about" class="nav-link {path === '/about' ? 'active' : ''}">About</Link>
+    <button class="theme-toggle" on:click={toggleDarkMode} aria-label="Toggle theme">
+      {#if darkMode}
+        ☀️
+      {:else}
+        🌙
+      {/if}
+    </button>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    text-decoration: none;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 1rem;
+  }
+  
+  .nav-link:hover, .nav-link.active {
+    color: var(--accent-color);
+  }
+  
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+  }
+  
+  .theme-toggle:hover {
+    background-color: var(--button-bg);
+  }
+  
+  @media (max-width: 600px) {
+    .nav {
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .nav-links {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+</style>
