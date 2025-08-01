@@ -4,6 +4,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
+import nodePolyfillsPlugin from 'rollup-plugin-node-polyfills';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -17,9 +18,12 @@ function serve() {
   return {
     writeBundle() {
       if (server) return;
-      server = require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
-        stdio: ['ignore', 'inherit', 'inherit'],
-        shell: true
+      // Use dynamic import for child_process instead of require
+      import('child_process').then(({ spawn }) => {
+        server = spawn('npm', ['run', 'start', '--', '--dev'], {
+          stdio: ['ignore', 'inherit', 'inherit'],
+          shell: true
+        });
       });
 
       process.on('SIGTERM', toExit);
@@ -56,6 +60,8 @@ export default {
       dedupe: ['svelte']
     }),
     commonjs(),
+    // Add Node.js polyfills for browser compatibility
+    nodePolyfillsPlugin(),
 
     // In dev mode, call `npm run start` once
     // the bundle has been generated

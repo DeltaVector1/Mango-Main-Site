@@ -1,79 +1,97 @@
-import fs from 'fs';
-import path from 'path';
 import { parseMarkdown, sortPostsByDate } from './markdown';
 
-const BLOG_DIR = path.join(process.cwd(), 'blogs');
+const BLOG_DIR = '/blogs';
 
 /**
  * Get all blog posts
- * @returns {Array} - Array of blog posts with frontmatter and content
+ * @returns {Promise<Array>} - Promise resolving to array of blog posts with frontmatter and content
  */
-export function getAllPosts() {
-  // Get all markdown files from the blogs directory
-  const files = fs.readdirSync(BLOG_DIR);
-  const markdownFiles = files.filter(file => file.endsWith('.md'));
+export async function getAllPosts() {
+  // Known blog posts - in a real app, you might fetch a list from an API
+  const knownPosts = [
+    'first-blog-post',
+    'learning-to-dequantise',
+    'the-new-xor-problem'
+  ];
   
-  // Parse each markdown file
-  const posts = markdownFiles.map(filename => {
-    const filePath = path.join(BLOG_DIR, filename);
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    const { frontmatter, content } = parseMarkdown(fileContents);
-    
-    // Skip about page or other special pages
-    if (frontmatter.type === 'about') return null;
-    
-    // Add slug based on filename
-    const slug = filename.replace(/\.md$/, '');
-    
-    return {
-      slug,
-      frontmatter,
-      content
-    };
-  }).filter(Boolean); // Remove null entries
+  // Fetch each post in parallel
+  const postsPromises = knownPosts.map(async (slug) => {
+    try {
+      const post = await getPostBySlug(slug);
+      return post;
+    } catch (error) {
+      console.error(`Error loading post ${slug}:`, error);
+      return null;
+    }
+  });
   
-  // Sort posts by date
-  return sortPostsByDate(posts);
+  // Wait for all posts to be fetched
+  const posts = await Promise.all(postsPromises);
+  
+  // Filter out any failed posts and sort by date
+  return sortPostsByDate(posts.filter(Boolean));
 }
 
 /**
  * Get a single blog post by slug
  * @param {string} slug - The post slug
- * @returns {Object|null} - The blog post or null if not found
+ * @returns {Promise<Object|null>} - Promise resolving to the blog post or null if not found
  */
-export function getPostBySlug(slug) {
-  const filePath = path.join(BLOG_DIR, `${slug}.md`);
-  
-  // Check if file exists
-  if (!fs.existsSync(filePath)) return null;
-  
-  // Read and parse the file
-  const fileContents = fs.readFileSync(filePath, 'utf8');
-  const { frontmatter, content } = parseMarkdown(fileContents);
-  
-  return {
-    slug,
-    frontmatter,
-    content
-  };
+export async function getPostBySlug(slug) {
+  try {
+    // Fetch the markdown file
+    const response = await fetch(`${BLOG_DIR}/${slug}.md`);
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch post: ${response.status}`);
+    }
+    
+    // Get the file contents
+    const fileContents = await response.text();
+    
+    // Parse the markdown
+    const { frontmatter, content } = parseMarkdown(fileContents);
+    
+    // Skip about page or other special pages
+    if (frontmatter.type === 'about') return null;
+    
+    // Return the post data
+    return {
+      slug,
+      frontmatter,
+      content
+    };
+  } catch (error) {
+    console.error(`Error fetching post ${slug}:`, error);
+    return null;
+  }
 }
 
 /**
  * Get the about page content
- * @returns {Object|null} - The about page content or null if not found
+ * @returns {Promise<Object|null>} - Promise resolving to the about page content or null if not found
  */
-export function getAboutPage() {
-  const filePath = path.join(BLOG_DIR, 'about.md');
-  
-  // Check if file exists
-  if (!fs.existsSync(filePath)) return null;
-  
-  // Read and parse the file
-  const fileContents = fs.readFileSync(filePath, 'utf8');
-  const { frontmatter, content } = parseMarkdown(fileContents);
-  
-  return {
-    frontmatter,
-    content
-  };
+export async function getAboutPage() {
+  try {
+    // Fetch the about markdown file
+    const response = await fetch(`${BLOG_DIR}/about.md`);
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch about page: ${response.status}`);
+    }
+    
+    // Get the file contents
+    const fileContents = await response.text();
+    
+    // Parse the markdown
+    const { frontmatter, content } = parseMarkdown(fileContents);
+    
+    return {
+      frontmatter,
+      content
+    };
+  } catch (error) {
+    console.error('Error fetching about page:', error);
+    return null;
+  }
 }

@@ -1,0 +1,250 @@
+:root {
+	--bg-color: #000000;
+	--text-color: #ffffff;
+	--accent-color: #ff0000;
+	--button-bg: #1a0000;
+	--button-text: #ffffff;
+	--button-hover-bg: #2a0000;
+	--border-color: #ff0000;
+  }
+  * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  }
+  body {
+	margin: 0;
+	font-family: 'Quicksand', sans-serif;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	transition: background-color 0.5s, color 0.5s;
+	line-height: 1.6;
+  }
+  
+  /* Blog specific styles */
+  .blog-container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+  }
+  
+  .blog-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 20px;
+	margin-top: 30px;
+  }
+  
+  .blog-card {
+	background-color: var(--card-bg);
+	border: var(--blog-border);
+	border-radius: 5px;
+	padding: 20px;
+	transition: transform 0.3s, background-color 0.3s;
+	cursor: pointer;
+  }
+  
+  .blog-card:hover {
+	transform: translateY(-5px);
+	background-color: var(--blog-hover-bg);
+  }
+  
+  .blog-title {
+	color: var(--blog-title-color);
+	font-size: 1.5em;
+	margin-bottom: 10px;
+  }
+  
+  .blog-date {
+	color: var(--blog-date-color);
+	font-size: 0.9em;
+	margin-bottom: 15px;
+  }
+  
+  .blog-excerpt {
+	color: var(--text-color);
+	font-size: 1em;
+	line-height: 1.5;
+  }
+  
+  .blog-content {
+	padding: 30px 0;
+  }
+  
+  /* Markdown content styling */
+  .markdown-content h1, .markdown-content h2, .markdown-content h3, 
+  .markdown-content h4, .markdown-content h5, .markdown-content h6 {
+	color: var(--accent-color);
+	margin-top: 1.5em;
+	margin-bottom: 0.5em;
+  }
+  
+  .markdown-content p {
+	margin-bottom: 1.2em;
+  }
+  
+  .markdown-content a {
+	color: var(--link-color);
+	text-decoration: none;
+	border-bottom: 1px solid var(--link-color);
+	transition: color 0.3s, border-color 0.3s;
+  }
+  
+  .markdown-content a:hover {
+	color: var(--link-hover-color);
+	border-color: var(--link-hover-color);
+  }
+  
+  .markdown-content code {
+	background-color: var(--code-bg);
+	color: var(--code-text);
+	padding: 2px 5px;
+	border-radius: 3px;
+	font-family: monospace;
+  }
+  
+  .markdown-content pre {
+	background-color: var(--code-bg);
+	padding: 15px;
+	border-radius: 5px;
+	overflow-x: auto;
+	margin: 1.5em 0;
+  }
+  
+  .markdown-content pre code {
+	background-color: transparent;
+	padding: 0;
+  }
+  
+  .markdown-content blockquote {
+	border-left: 3px solid var(--blockquote-border);
+	padding-left: 15px;
+	margin-left: 0;
+	color: var(--text-color);
+	font-style: italic;
+  }
+  
+  .markdown-content img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 5px;
+	margin: 1.5em 0;
+  }
+  
+  .markdown-content hr {
+	border: none;
+	border-top: 1px solid var(--border-color);
+	margin: 2em 0;
+  }
+  
+  /* Navigation */
+  .nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	border-bottom: 1px solid var(--border-color);
+  }
+  
+  .nav-links {
+	display: flex;
+	gap: 20px;
+  }
+  
+  .nav-link {
+	color: var(--text-color);
+	text-decoration: none;
+	transition: color 0.3s;
+  }
+  
+  .nav-link:hover, .nav-link.active {
+	color: var(--accent-color);
+  }
+  
+  /* About page */
+  .about-container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+  }
+  
+  .about-header {
+	text-align: center;
+	margin-bottom: 40px;
+  }
+  
+  .about-content {
+	line-height: 1.8;
+  }
+  
+  .about-section {
+	margin-bottom: 40px;
+  }
+  
+  .about-section h2 {
+	color: var(--accent-color);
+	border-bottom: 1px solid var(--border-color);
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+  }
+  .light-mode {
+	--bg-color: #1a1a1a;
+	--text-color: #f0f0f0;
+	--accent-color: #ff3333;
+	--button-bg: #2a0000;
+	--button-text: #ffffff;
+	--button-hover-bg: #3a0000;
+	--border-color: #ff3333;
+  }
+  
+  :root {
+	/* Message and input variables */
+	--message-bg: rgba(30, 0, 0, 0.3);
+	--message-text: var(--text-color);
+	--input-border: var(--border-color);
+	--code-bg: #1a0000;
+	--code-text: #ff6666;
+	--blockquote-border: #ff0000;
+	--link-color: #ff3333;
+	--link-hover-color: #ff6666;
+  }
+  .light-mode {
+	/* Light mode message and input variables */
+	--message-bg: rgba(50, 0, 0, 0.2);
+	--message-text: var(--text-color);
+	--input-border: var(--border-color);
+	--code-bg: #2a0000;
+	--code-text: #ff8080;
+	--blockquote-border: #ff3333;
+	--link-color: #ff4d4d;
+	--link-hover-color: #ff8080;
+  }
+  :root {
+	--bg-color: #000000; /* Background color */
+	--text-color: #ffffff; /* Text color */
+	--accent-color: #ff0000; /* Accent color */
+	--button-bg: #1a0000; /* Button background */
+	--button-text: #ffffff; /* Button text color */
+	--button-hover-bg: #2a0000; /* Button hover background */
+	--card-bg: #0a0000; /* Card background color */
+	--border-color: #ff0000; /* Border color */
+	--blog-title-color: #ff3333; /* Blog title color */
+	--blog-date-color: #cc0000; /* Blog date color */
+	--blog-border: 1px solid #ff0000; /* Blog border */
+	--blog-hover-bg: #1a0000; /* Blog hover background */
+  }
+  .light-mode {
+	--bg-color: #1a1a1a;
+	--text-color: #f0f0f0;
+	--accent-color: #ff3333;
+	--button-bg: #2a0000;
+	--button-text: #ffffff;
+	--button-hover-bg: #3a0000;
+	--card-bg: #150000; /* Light mode card background */
+	--border-color: #ff3333; /* Light mode border color */
+	--blog-title-color: #ff4d4d; /* Light mode blog title color */
+	--blog-date-color: #e60000; /* Light mode blog date color */
+	--blog-border: 1px solid #ff3333; /* Light mode blog border */
+	--blog-hover-bg: #2a0000; /* Light mode blog hover background */
+  }
+  

@@ -15,7 +15,7 @@
   onMount(async () => {
     try {
       // Get the post by slug
-      post = getPostBySlug(slug);
+      post = await getPostBySlug(slug);
       
       if (!post) {
         error = 'Blog post not found.';
@@ -24,7 +24,7 @@
       }
       
       // Get related posts (excluding the current post)
-      const allPosts = getAllPosts();
+      const allPosts = await getAllPosts();
       relatedPosts = allPosts
         .filter(p => p.slug !== slug)
         .slice(0, 3); // Get up to 3 related posts

@@ -10,7 +10,8 @@
   
   onMount(async () => {
     try {
-      posts = getAllPosts().slice(0, 3); // Get the 3 most recent posts
+      const allPosts = await getAllPosts();
+      posts = allPosts.slice(0, 3); // Get the 3 most recent posts
       loading = false;
     } catch (err) {
       console.error('Error loading posts:', err);

@@ -1,12 +1,30 @@
 <script>
-  import { Link, location } from 'svelte-routing';
+  import { Link } from 'svelte-routing';
+  import { onMount } from 'svelte';
   
   // Props
   export let darkMode = true;
   export let toggleDarkMode;
   
-  // Reactive statement to get the current path
-  $: path = $location.pathname;
+  // Use window.location to get the current path
+  let path = '';
+  
+  onMount(() => {
+    // Set initial path
+    path = window.location.pathname;
+    
+    // Update path when navigation occurs
+    const handleNavigation = () => {
+      path = window.location.pathname;
+    };
+    
+    // Listen for navigation events
+    window.addEventListener('popstate', handleNavigation);
+    
+    return () => {
+      window.removeEventListener('popstate', handleNavigation);
+    };
+  });
 </script>
 
 <nav class="nav">
@@ -15,9 +33,9 @@
   </div>
   
   <div class="nav-links">
-    <Link to="/" class="nav-link {path === '/' ? 'active' : ''}">Home</Link>
-    <Link to="/blog" class="nav-link {path.startsWith('/blog') ? 'active' : ''}">Blog</Link>
-    <Link to="/about" class="nav-link {path === '/about' ? 'active' : ''}">About</Link>
+    <Link to="/" class="nav-link {path === '/' ? 'active' : ''}" on:click={() => path = '/'}>Home</Link>
+    <Link to="/blog" class="nav-link {path.startsWith('/blog') ? 'active' : ''}" on:click={() => path = '/blog'}>Blog</Link>
+    <Link to="/about" class="nav-link {path === '/about' ? 'active' : ''}" on:click={() => path = '/about'}>About</Link>
     <button class="theme-toggle" on:click={toggleDarkMode} aria-label="Toggle theme">
       {#if darkMode}
         ☀️

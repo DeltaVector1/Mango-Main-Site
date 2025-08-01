@@ -10,7 +10,7 @@
   
   onMount(async () => {
     try {
-      posts = getAllPosts();
+      posts = await getAllPosts();
       loading = false;
     } catch (err) {
       console.error('Error loading posts:', err);

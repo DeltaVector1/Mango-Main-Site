@@ -8,7 +8,7 @@
   
   onMount(async () => {
     try {
-      aboutContent = getAboutPage();
+      aboutContent = await getAboutPage();
       
       if (!aboutContent) {
         error = 'About page content not found.';
