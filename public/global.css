@@ -12,9 +12,13 @@
 	padding: 0;
 	box-sizing: border-box;
   }
+  html {
+	scroll-behavior: smooth;
+  }
+
   body {
 	margin: 0;
-	font-family: 'Quicksand', sans-serif;
+	font-family: 'Josefin Sans', sans-serif;
 	background-color: var(--bg-color);
 	color: var(--text-color);
 	transition: background-color 0.5s, color 0.5s;
@@ -38,19 +42,22 @@
   .blog-card {
 	background-color: var(--card-bg);
 	border: var(--blog-border);
-	border-radius: 5px;
+	border-radius: 12px;
 	padding: 20px;
-	transition: transform 0.3s, background-color 0.3s;
+	transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
 	cursor: pointer;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
   .blog-card:hover {
 	transform: translateY(-5px);
 	background-color: var(--blog-hover-bg);
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
   }
   
   .blog-title {
 	color: var(--blog-title-color);
+	font-family: 'Bitcount Prop Double', monospace;
 	font-size: 1.5em;
 	margin-bottom: 10px;
   }
@@ -71,10 +78,45 @@
 	padding: 30px 0;
   }
   
+  /* Add button styling */
+  button, .button, a.button {
+	background-color: var(--button-bg);
+	color: var(--button-text);
+	border: none;
+	border-radius: 8px;
+	padding: 10px 20px;
+	cursor: pointer;
+	transition: background-color 0.3s, transform 0.2s;
+	font-family: 'Josefin Sans', sans-serif;
+  }
+
+  button:hover, .button:hover, a.button:hover {
+	background-color: var(--button-hover-bg);
+	transform: scale(1.05);
+  }
+
+  /* Add input styling */
+  input, textarea, select {
+	border-radius: 8px;
+	border: 1px solid var(--border-color);
+	padding: 10px;
+	background-color: rgba(0, 0, 0, 0.2);
+	color: var(--text-color);
+	transition: border-color 0.3s, box-shadow 0.3s;
+	font-family: 'Josefin Sans', sans-serif;
+  }
+
+  input:focus, textarea:focus, select:focus {
+	border-color: var(--accent-color);
+	box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
+	outline: none;
+  }
+
   /* Markdown content styling */
   .markdown-content h1, .markdown-content h2, .markdown-content h3, 
   .markdown-content h4, .markdown-content h5, .markdown-content h6 {
 	color: var(--accent-color);
+	font-family: 'Bitcount Prop Double', monospace;
 	margin-top: 1.5em;
 	margin-bottom: 0.5em;
   }

@@ -53,6 +53,11 @@
     align-items: center;
     padding: 20px;
     border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(5px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: padding 0.3s, box-shadow 0.3s;
   }
   
   .logo a {
@@ -60,6 +65,12 @@
     font-weight: bold;
     color: var(--accent-color);
     text-decoration: none;
+    font-family: 'Bitcount Prop Double', monospace;
+    transition: transform 0.3s;
+  }
+  
+  .logo a:hover {
+    transform: scale(1.05);
   }
   
   .nav-links {
@@ -71,12 +82,30 @@
   .nav-link {
     color: var(--text-color);
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s, transform 0.3s;
     font-size: 1rem;
+    position: relative;
+    padding: 5px 0;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s;
   }
   
   .nav-link:hover, .nav-link.active {
     color: var(--accent-color);
+    transform: translateY(-2px);
+  }
+  
+  .nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
   }
   
   .theme-toggle {
@@ -87,13 +116,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px;
+    padding: 8px;
     border-radius: 50%;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
   .theme-toggle:hover {
     background-color: var(--button-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
   @media (max-width: 600px) {

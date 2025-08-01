@@ -23,7 +23,7 @@ function getBaseUrl() {
 }
 
 // Use relative path instead of absolute path for blog directory
-const BLOG_DIR = `${getBaseUrl()}blogs`;
+const BLOG_DIR = `${getBaseUrl()}/blogs`;
 
 /**
  * Get all blog posts
