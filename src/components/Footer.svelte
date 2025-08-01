@@ -6,8 +6,8 @@
   <div class="footer-content">
     <p>© {currentYear} when trees fall... All rights reserved.</p>
     <div class="footer-links">
-      <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+      <a href="https://github.com/whenTreesFall" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://twitter.com/whenTreesFall" target="_blank" rel="noopener noreferrer">Twitter</a>
     </div>
   </div>
 </footer>

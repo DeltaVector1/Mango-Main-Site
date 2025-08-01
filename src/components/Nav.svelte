@@ -10,19 +10,26 @@
   let path = '';
   
   onMount(() => {
-    // Set initial path
-    path = window.location.pathname;
+    // Set initial path - for hash routing, we need to get the hash part
+    updatePath();
     
     // Update path when navigation occurs
     const handleNavigation = () => {
-      path = window.location.pathname;
+      updatePath();
     };
     
+    // Function to extract path from hash
+    function updatePath() {
+      // For hash routing, the format is #/path
+      const hash = window.location.hash;
+      path = hash ? hash.substring(1) : '/';
+    }
+    
     // Listen for navigation events
-    window.addEventListener('popstate', handleNavigation);
+    window.addEventListener('hashchange', handleNavigation);
     
     return () => {
-      window.removeEventListener('popstate', handleNavigation);
+      window.removeEventListener('hashchange', handleNavigation);
     };
   });
 </script>

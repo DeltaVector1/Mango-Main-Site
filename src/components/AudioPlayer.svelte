@@ -147,7 +147,8 @@
     justify-content: center;
     cursor: pointer;
     transition: transform 0.3s ease, background-color 0.3s;
-    color: var(--accent-color);
+    color: var(--text-color);
+    padding: 0;
   }
   
   .music-toggle:hover, .volume-toggle:hover {
@@ -158,6 +159,10 @@
   .icon-container {
     width: 20px;
     height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
   }
   
   .spin {

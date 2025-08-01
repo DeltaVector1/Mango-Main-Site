@@ -51,7 +51,7 @@
   }
 </script>
 
-<Router {url} basepath={basePath}>
+<Router {url} basepath={basePath} mode="hash">
   <div class="app-container">
     <Nav {darkMode} {toggleDarkMode} />
     
